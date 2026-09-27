@@ -1,25 +1,23 @@
 # 🚀 JobPortal
 
-A full-stack Job Portal web application built using Java, Spring Boot, Spring Security, MySQL, HTML, CSS and JavaScript.
+A full-stack Job Portal application built with Spring Boot, Spring Security and MySQL.
 
-## Features
+## ✨ Features
 
 - User Registration and Login
-- Secure BCrypt Password Hashing
-- Browse Jobs
-- Search Jobs
+- Secure password hashing using BCrypt
+- Browse and Search Jobs
 - View Job Details
 - Apply for Jobs
-- Duplicate Application Prevention
-- My Applications
+- Track Job Applications
 - Admin Dashboard
-- Add Jobs
-- Delete Jobs
+- Add and Delete Job Listings
 - View Candidate Applications
 - Role-Based Access Control
-- Secure Logout
+- Session-Based Authentication
+- Responsive Web Interface
 
-## Technologies
+## 🛠️ Technologies
 
 - Java
 - Spring Boot
@@ -32,6 +30,7 @@ A full-stack Job Portal web application built using Java, Spring Boot, Spring Se
 - JavaScript
 - Maven
 - IntelliJ IDEA
+
 ## 📌 Project Overview
 
 JobPortal is a full-stack web application designed to connect job seekers with available job opportunities.
@@ -41,6 +40,7 @@ Users can create an account, securely log in, browse and search for jobs, view j
 The application also provides an Admin Dashboard where administrators can add and delete job listings and view candidate applications.
 
 The project demonstrates the use of Spring Boot, Spring Security, Spring Data JPA, MySQL and a responsive web interface.
+
 ## 🏗️ Project Structure
 
 ```text
@@ -72,6 +72,7 @@ JobPortal
 │
 ├── pom.xml
 └── README.md
+```
 
 ## 🔐 Security
 
@@ -107,6 +108,7 @@ ADMIN
  ├── Delete Jobs
  ├── Manage Job Listings
  └── View Candidate Applications
+```
 
 ## 🗄️ Database
 
@@ -116,6 +118,7 @@ The application uses MySQL as the relational database.
 
 ```text
 jobportal
+```
 
 ### Main Tables
 
@@ -123,6 +126,7 @@ jobportal
 users
 jobs
 applications
+```
 
 ### Users Table
 
@@ -190,10 +194,8 @@ Stores:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/jobportal.git
-
-```bash
-cd jobportal
+git clone https://github.com/swapnilk1601/JobPortal.git
+cd JobPortal
 ```
 
 ### 2. Create MySQL Database
@@ -249,23 +251,28 @@ http://localhost:8080
 ## 📸 Screenshots
 
 ### 🏠 Home Page
-![Home Page](screenshots/home.png.png)
+
+[Home Page](https://github.com/swapnilk1601/JobPortal/blob/master/screenshots/home.png.png) ([image](https://github.com/swapnilk1601/JobPortal/raw/master/screenshots/home.png.png))
 
 ### 🔐 Login Page
-![Login Page](screenshots/login.png.png)
+
+[Login Page](https://github.com/swapnilk1601/JobPortal/blob/master/screenshots/login.png.png) ([image](https://github.com/swapnilk1601/JobPortal/raw/master/screenshots/login.png.png))
 
 ### 💼 Jobs Page
-![Jobs Page](screenshots/jobs.png.png)
+
+[Jobs Page](https://github.com/swapnilk1601/JobPortal/blob/master/screenshots/jobs.png.png) ([image](https://github.com/swapnilk1601/JobPortal/raw/master/screenshots/jobs.png.png))
 
 ### 📄 Job Details
-![Job Details](screenshots/job-details.png.png)
+
+[Job Details](https://github.com/swapnilk1601/JobPortal/blob/master/screenshots/job-details.png.png) ([image](https://github.com/swapnilk1601/JobPortal/raw/master/screenshots/job-details.png.png))
 
 ### 📋 My Applications
-![My Applications](screenshots/my-applications.png.png)
+
+[My Applications](https://github.com/swapnilk1601/JobPortal/blob/master/screenshots/my-applications.png.png) ([image](https://github.com/swapnilk1601/JobPortal/raw/master/screenshots/my-applications.png.png))
 
 ### 👑 Admin Dashboard
-![Admin Dashboard](screenshots/admin.png.png)
----
+
+[Admin Dashboard](https://github.com/swapnilk1601/JobPortal/blob/master/screenshots/admin.png.png) ([image](https://github.com/swapnilk1601/JobPortal/raw/master/screenshots/admin.png.png))
 
 ## 👨‍💻 Author
 
