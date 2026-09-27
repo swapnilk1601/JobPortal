@@ -248,31 +248,29 @@ http://localhost:8080
 
 ## 📸 Screenshots
 
-Screenshots of the JobPortal application will be added here.
-
 ### 🏠 Home Page
 
-_Add screenshot here_
+![Home Page](screenshots/home.png)
 
 ### 🔐 Login Page
 
-_Add screenshot here_
+![Login Page](screenshots/login.png)
 
 ### 💼 Jobs Page
 
-_Add screenshot here_
+![Jobs Page](screenshots/jobs.png)
 
 ### 📄 Job Details
 
-_Add screenshot here_
+![Job Details](screenshots/job-details.png)
 
 ### 📋 My Applications
 
-_Add screenshot here_
+![My Applications](screenshots/applications.png)
 
 ### 👑 Admin Dashboard
 
-_Add screenshot here_
+![Admin Dashboard](screenshots/admin.png)
 
 ---
 
