@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - JobPortal</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #eff6ff, #f8fafc);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Main Card */
+
+        .container {
+            width: 100%;
+            max-width: 430px;
+            background: white;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.10);
+        }
+
+        /* Logo */
+
+        .logo {
+            text-align: center;
+            color: #2563eb;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        /* Heading */
+
+        h1 {
+            text-align: center;
+            color: #1e293b;
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+
+        .welcome-text {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 28px;
+            font-size: 14px;
+        }
+
+        /* Form */
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #334155;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #dbe2ea;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        input:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+        }
+
+        /* Password */
+
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-wrapper input {
+            padding-right: 75px;
+        }
+
+        .show-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: transparent;
+            color: #2563eb;
+            font-size: 13px;
+            cursor: pointer;
+            width: auto;
+            padding: 5px;
+        }
+
+        .show-password:hover {
+            background: transparent;
+            color: #1d4ed8;
+        }
+
+        /* Login Button */
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 5px;
+        }
+
+        .login-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .login-btn:disabled {
+            background: #93c5fd;
+            cursor: not-allowed;
+        }
+
+        /* Error */
+
+        .error-message {
+            display: none;
+            background: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+            padding: 11px;
+            border-radius: 8px;
+            margin-bottom: 18px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* Register */
+
+        .register-link {
+            text-align: center;
+            margin-top: 25px;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .register-link a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Home Link */
+
+        .home-link {
+            display: block;
+            text-align: center;
+            margin-top: 18px;
+            color: #64748b;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .home-link:hover {
+            color: #2563eb;
+        }
+
+        /* Mobile */
+
+        @media (max-width: 480px) {
+
+            .container {
+                padding: 30px 22px;
+            }
+
+            h1 {
+                font-size: 23px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+    <div class="logo">
+        JobPortal
+    </div>
+
+    <div class="subtitle">
+        Find your next opportunity
+    </div>
+
+
+    <h1>
+        Welcome Back
+    </h1>
+
+    <p class="welcome-text">
+        Login to continue to your account
+    </p>
+
+
+    <!-- Error Message -->
+
+    <div
+            id="errorMessage"
+            class="error-message">
+    </div>
+
+
+    <!-- Login Form -->
+
+    <form id="loginForm">
+
+
+        <!-- Email -->
+
+        <div class="form-group">
+
+            <label for="email">
+                Email Address
+            </label>
+
+            <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    autocomplete="email"
+                    required
+            >
+
+        </div>
+
+
+        <!-- Password -->
+
+        <div class="form-group">
+
+            <label for="password">
+                Password
+            </label>
+
+            <div class="password-wrapper">
+
+                <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                >
+
+                <button
+                        type="button"
+                        class="show-password"
+                        id="togglePassword"
+                        onclick="togglePassword()">
+
+                    Show
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Login Button -->
+
+        <button
+                type="submit"
+                class="login-btn"
+                id="loginButton">
+
+            Login
+
+        </button>
+
+    </form>
+
+
+    <!-- Register -->
+
+    <div class="register-link">
+
+        Don't have an account?
+
+        <a href="/register">
+            Create Account
+        </a>
+
+    </div>
+
+
+    <!-- Home -->
+
+    <a
+            href="/"
+            class="home-link">
+
+        ← Back to Home
+
+    </a>
+
+</div>
+
+
+<script>
+
+
+    // =========================
+    // SHOW / HIDE PASSWORD
+    // =========================
+
+    function togglePassword() {
+
+        const password =
+            document.getElementById("password");
+
+        const button =
+            document.getElementById("togglePassword");
+
+
+        if (password.type === "password") {
+
+            password.type = "text";
+
+            button.innerText = "Hide";
+
+        } else {
+
+            password.type = "password";
+
+            button.innerText = "Show";
+
+        }
+
+    }
+
+
+    // =========================
+    // LOGIN
+    // =========================
+
+    document
+        .getElementById("loginForm")
+        .addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+
+            const email =
+                document.getElementById("email")
+                    .value
+                    .trim();
+
+            const password =
+                document.getElementById("password")
+                    .value;
+
+
+            const loginButton =
+                document.getElementById("loginButton");
+
+            const errorMessage =
+                document.getElementById("errorMessage");
+
+
+            // Hide old error
+
+            errorMessage.style.display =
+                "none";
+
+
+            // Disable button
+
+            loginButton.disabled = true;
+
+            loginButton.innerText =
+                "Logging in...";
+
+
+            const user = {
+
+                email: email,
+
+                password: password
+
+            };
+
+
+            fetch("/api/users/login", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(user)
+
+            })
+
+                .then(async response => {
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            "Invalid email or password"
+                        );
+
+                    }
+
+                    return response.json();
+
+                })
+
+                .then(data => {
+
+                    /*
+                     * Backend now returns UserResponse,
+                     * so password is NOT stored here.
+                     */
+
+                    localStorage.setItem(
+                        "loggedInUser",
+                        JSON.stringify(data)
+                    );
+
+
+                    alert(
+                        "Login successful! 🎉"
+                    );
+
+
+                    window.location.href =
+                        "/jobs";
+
+                })
+
+                .catch(error => {
+
+                    errorMessage.innerText =
+                        error.message;
+
+                    errorMessage.style.display =
+                        "block";
+
+
+                    console.error(
+                        "Login error:",
+                        error
+                    );
+
+                })
+
+                .finally(() => {
+
+                    loginButton.disabled =
+                        false;
+
+                    loginButton.innerText =
+                        "Login";
+
+                });
+
+        });
+
+
+</script>
+
+
+</body>
+
+</html>

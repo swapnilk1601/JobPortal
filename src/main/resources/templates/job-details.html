@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Job Details - JobPortal</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f8fafc;
+            color: #1e293b;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            background: #ffffff;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            color: #2563eb;
+            font-size: 27px;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        nav a {
+            color: #334155;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #2563eb;
+        }
+
+        .login-link {
+            background: #2563eb;
+            color: white !important;
+            padding: 10px 19px;
+            border-radius: 8px;
+        }
+
+        .login-link:hover {
+            background: #1d4ed8;
+        }
+
+
+        /* =========================
+           CONTAINER
+        ========================= */
+
+        .container {
+            width: 86%;
+            max-width: 1000px;
+            margin: 50px auto;
+        }
+
+
+        /* =========================
+           BACK BUTTON
+        ========================= */
+
+        .back-link {
+            display: inline-block;
+            text-decoration: none;
+            color: #64748b;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            color: #2563eb;
+        }
+
+
+        /* =========================
+           JOB CARD
+        ========================= */
+
+        .job-details {
+            background: white;
+            padding: 42px;
+            border-radius: 18px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        }
+
+
+        /* =========================
+           JOB HEADER
+        ========================= */
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 25px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .job-icon {
+            width: 65px;
+            height: 65px;
+            background: #eff6ff;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            flex-shrink: 0;
+        }
+
+        .job-title-section {
+            flex: 1;
+        }
+
+        h1 {
+            color: #1e293b;
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .company {
+            color: #2563eb;
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+
+        /* =========================
+           JOB INFO
+        ========================= */
+
+        .info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin: 30px 0;
+        }
+
+        .info-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 17px;
+            border-radius: 10px;
+        }
+
+        .info-label {
+            color: #64748b;
+            font-size: 12px;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .info-value {
+            color: #334155;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+
+        /* =========================
+           DESCRIPTION
+        ========================= */
+
+        .description {
+            margin-top: 15px;
+        }
+
+        .description h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #1e293b;
+        }
+
+        .description p {
+            color: #64748b;
+            line-height: 1.8;
+            font-size: 15px;
+            white-space: pre-line;
+        }
+
+
+        /* =========================
+           ACTIONS
+        ========================= */
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .apply-btn {
+            padding: 13px 28px;
+            border: none;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .apply-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        .apply-btn:disabled {
+            background: #93c5fd;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .back-btn {
+            padding: 13px 25px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            background: white;
+            color: #334155;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .back-btn:hover {
+            background: #f8fafc;
+        }
+
+
+        /* =========================
+           LOADING
+        ========================= */
+
+        .loading {
+            text-align: center;
+            padding: 70px 20px;
+            color: #64748b;
+        }
+
+        .loading-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+
+        /* =========================
+           ERROR
+        ========================= */
+
+        .error-box {
+            background: white;
+            padding: 60px 25px;
+            border-radius: 18px;
+            border: 1px solid #fecaca;
+            text-align: center;
+        }
+
+        .error-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .error-box h2 {
+            color: #334155;
+            margin-bottom: 10px;
+        }
+
+        .error-box p {
+            color: #64748b;
+            margin-bottom: 22px;
+        }
+
+        .jobs-btn {
+            display: inline-block;
+            text-decoration: none;
+            background: #2563eb;
+            color: white;
+            padding: 11px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 16px 5%;
+            }
+
+            .nav-links {
+                gap: 13px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .container {
+                width: 92%;
+                margin: 30px auto;
+            }
+
+            .job-details {
+                padding: 25px;
+            }
+
+            .job-header {
+                flex-direction: column;
+            }
+
+            h1 {
+                font-size: 27px;
+            }
+
+            .info {
+                grid-template-columns: 1fr;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .apply-btn,
+            .back-btn {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav>
+
+    <div class="logo">
+        JobPortal
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/jobs">
+            Jobs
+        </a>
+
+        <a href="/applications">
+            My Applications
+        </a>
+
+        <a
+                href="/login"
+                class="login-link">
+
+            Login
+
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<div class="container">
+
+
+    <a
+            href="/jobs"
+            class="back-link">
+
+        ← Back to Jobs
+
+    </a>
+
+
+    <!-- Loading -->
+
+    <div
+            id="loading"
+            class="loading">
+
+        <div class="loading-icon">
+            💼
+        </div>
+
+        <p>
+            Loading job details...
+        </p>
+
+    </div>
+
+
+    <!-- Error -->
+
+    <div
+            id="errorBox"
+            class="error-box"
+            style="display: none;">
+
+        <div class="error-icon">
+            ⚠️
+        </div>
+
+        <h2 id="errorTitle">
+            Job Not Found
+        </h2>
+
+        <p id="errorMessage">
+            The requested job could not be found.
+        </p>
+
+        <a
+                href="/jobs"
+                class="jobs-btn">
+
+            Browse Jobs
+
+        </a>
+
+    </div>
+
+
+    <!-- Job Details -->
+
+    <div
+            id="jobDetails"
+            class="job-details"
+            style="display: none;">
+
+
+        <!-- Job Header -->
+
+        <div class="job-header">
+
+            <div class="job-title-section">
+
+                <h1 id="jobTitle">
+                    Job Title
+                </h1>
+
+                <div
+                        class="company"
+                        id="company">
+
+                    Company
+
+                </div>
+
+            </div>
+
+
+            <div class="job-icon">
+                💼
+            </div>
+
+        </div>
+
+
+        <!-- Job Information -->
+
+        <div class="info">
+
+
+            <div class="info-card">
+
+                <div class="info-label">
+                    Location
+                </div>
+
+                <div
+                        class="info-value"
+                        id="location">
+
+                    -
+
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-label">
+                    Salary
+                </div>
+
+                <div
+                        class="info-value">
+
+                    ₹<span id="salary">
+                        -
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Description -->
+
+        <div class="description">
+
+            <h2>
+                Job Description
+            </h2>
+
+            <p id="description">
+                -
+            </p>
+
+        </div>
+
+
+        <!-- Actions -->
+
+        <div class="actions">
+
+            <button
+                    id="applyButton"
+                    class="apply-btn">
+
+                Apply Now
+
+            </button>
+
+            <button
+                    class="back-btn"
+                    onclick="window.location.href='/jobs'">
+
+                ← Back to Jobs
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+    // =========================
+    // GET JOB ID
+    // =========================
+
+    const urlParams =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    const jobId =
+        urlParams.get("id");
+
+
+    let currentJob = null;
+
+
+    // =========================
+    // ELEMENTS
+    // =========================
+
+    const loading =
+        document.getElementById("loading");
+
+    const errorBox =
+        document.getElementById("errorBox");
+
+    const errorTitle =
+        document.getElementById("errorTitle");
+
+    const errorMessage =
+        document.getElementById("errorMessage");
+
+    const jobDetails =
+        document.getElementById("jobDetails");
+
+
+    // =========================
+    // LOAD JOB
+    // =========================
+
+    function loadJob() {
+
+        if (!jobId) {
+
+            showError(
+                "Invalid Job",
+                "No job ID was provided."
+            );
+
+            return;
+
+        }
+
+
+        fetch("/api/jobs")
+
+            .then(response => {
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Unable to load jobs"
+                    );
+
+                }
+
+                return response.json();
+
+            })
+
+            .then(jobs => {
+
+                currentJob =
+                    jobs.find(
+                        job =>
+                            job.id == jobId
+                    );
+
+
+                if (!currentJob) {
+
+                    showError(
+                        "Job Not Found",
+                        "This job may have been removed or is no longer available."
+                    );
+
+                    return;
+
+                }
+
+
+                // Fill details
+
+                document.getElementById(
+                    "jobTitle"
+                ).innerText =
+                    currentJob.title;
+
+
+                document.getElementById(
+                    "company"
+                ).innerText =
+                    currentJob.company;
+
+
+                document.getElementById(
+                    "location"
+                ).innerText =
+                    currentJob.location;
+
+
+                document.getElementById(
+                    "salary"
+                ).innerText =
+                    currentJob.salary;
+
+
+                document.getElementById(
+                    "description"
+                ).innerText =
+                    currentJob.description;
+
+
+                // Show page
+
+                loading.style.display =
+                    "none";
+
+                jobDetails.style.display =
+                    "block";
+
+            })
+
+            .catch(error => {
+
+                console.error(error);
+
+                showError(
+                    "Unable to Load Job",
+                    "Something went wrong while loading the job details."
+                );
+
+            });
+
+    }
+
+
+    // =========================
+    // SHOW ERROR
+    // =========================
+
+    function showError(
+        title,
+        message
+    ) {
+
+        loading.style.display =
+            "none";
+
+        jobDetails.style.display =
+            "none";
+
+        errorTitle.innerText =
+            title;
+
+        errorMessage.innerText =
+            message;
+
+        errorBox.style.display =
+            "block";
+
+    }
+
+
+    // =========================
+    // APPLY
+    // =========================
+
+    document
+        .getElementById("applyButton")
+        .addEventListener(
+            "click",
+            function() {
+
+                const loggedInUser =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "loggedInUser"
+                        )
+                    );
+
+
+                // Login check
+
+                if (!loggedInUser) {
+
+                    alert(
+                        "Please login first."
+                    );
+
+                    window.location.href =
+                        "/login";
+
+                    return;
+
+                }
+
+
+                if (!currentJob) {
+
+                    alert(
+                        "Job details are not available."
+                    );
+
+                    return;
+
+                }
+
+
+                const application = {
+
+                    userId:
+                    loggedInUser.id,
+
+                    jobId:
+                    currentJob.id
+
+                };
+
+
+                const applyButton =
+                    document.getElementById(
+                        "applyButton"
+                    );
+
+
+                applyButton.disabled =
+                    true;
+
+                applyButton.innerText =
+                    "Applying...";
+
+
+                fetch(
+                    "/api/applications",
+                    {
+
+                        method: "POST",
+
+                        headers: {
+
+                            "Content-Type":
+                                "application/json"
+
+                        },
+
+                        body:
+                            JSON.stringify(
+                                application
+                            )
+
+                    }
+                )
+
+                    .then(async response => {
+
+                        const text =
+                            await response.text();
+
+
+                        if (!response.ok) {
+
+                            throw new Error(
+                                text ||
+                                "Unable to submit application"
+                            );
+
+                        }
+
+
+                        return text;
+
+                    })
+
+                    .then(() => {
+
+                        alert(
+                            "Application submitted successfully! 🎉"
+                        );
+
+
+                        window.location.href =
+                            "/applications";
+
+                    })
+
+                    .catch(error => {
+
+                        console.error(
+                            "Application error:",
+                            error
+                        );
+
+
+                        alert(
+                            error.message ||
+                            "Something went wrong."
+                        );
+
+
+                        applyButton.disabled =
+                            false;
+
+                        applyButton.innerText =
+                            "Apply Now";
+
+                    });
+
+            }
+        );
+
+
+    // =========================
+    // START
+    // =========================
+
+    loadJob();
+
+</script>
+
+
+</body>
+
+</html>

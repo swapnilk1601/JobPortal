@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JobPortal - Find Your Dream Job</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f8fafc;
+            color: #1e293b;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            background: rgba(255, 255, 255, 0.96);
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: 700;
+            color: #2563eb;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #334155;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: #2563eb;
+        }
+
+        .login-btn {
+            background: #2563eb;
+            color: white !important;
+            padding: 11px 21px;
+            border-radius: 8px;
+        }
+
+        .login-btn:hover {
+            background: #1d4ed8;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 570px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px;
+            background:
+                    radial-gradient(
+                            circle at top right,
+                            rgba(255,255,255,0.18),
+                            transparent 35%
+                    ),
+                    linear-gradient(
+                            135deg,
+                            #2563eb,
+                            #4f46e5
+                    );
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 30px;
+            background: rgba(255,255,255,0.14);
+            border: 1px solid rgba(255,255,255,0.25);
+            font-size: 13px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-size: 58px;
+            line-height: 1.1;
+            margin-bottom: 22px;
+            letter-spacing: -1.5px;
+        }
+
+        .hero h1 span {
+            color: #dbeafe;
+        }
+
+        .hero p {
+            font-size: 19px;
+            line-height: 1.7;
+            max-width: 700px;
+            margin: 0 auto 35px;
+            color: #e0e7ff;
+        }
+
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        .search-box {
+            background: white;
+            max-width: 760px;
+            margin: auto;
+            padding: 8px;
+            border-radius: 12px;
+            display: flex;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.18);
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 16px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            color: #1e293b;
+            border-radius: 8px;
+        }
+
+        .search-box input::placeholder {
+            color: #94a3b8;
+        }
+
+        .search-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 0 28px;
+            border-radius: 9px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .search-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+
+        /* =========================
+           STATS
+        ========================= */
+
+        .stats {
+            background: white;
+            padding: 28px 7%;
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat h3 {
+            color: #2563eb;
+            font-size: 25px;
+            margin-bottom: 5px;
+        }
+
+        .stat p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .features {
+            padding: 85px 7%;
+            text-align: center;
+        }
+
+        .section-label {
+            color: #2563eb;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .features h2 {
+            font-size: 36px;
+            margin-bottom: 12px;
+            color: #1e293b;
+        }
+
+        .section-description {
+            max-width: 600px;
+            margin: 0 auto 45px;
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            width: 300px;
+            padding: 32px;
+            border-radius: 14px;
+            text-align: left;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+            transition: 0.25s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.09);
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eff6ff;
+            border-radius: 12px;
+            font-size: 23px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+            color: #1e293b;
+            font-size: 19px;
+        }
+
+        .card p {
+            color: #64748b;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta {
+            margin: 0 7% 70px;
+            padding: 55px 30px;
+            border-radius: 18px;
+            background: linear-gradient(
+                    135deg,
+                    #1e40af,
+                    #4f46e5
+            );
+            color: white;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .cta p {
+            color: #dbeafe;
+            margin-bottom: 25px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            text-decoration: none;
+            background: white;
+            color: #2563eb;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .cta-btn:hover {
+            background: #eff6ff;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+            padding: 28px;
+            background: #111827;
+            color: #cbd5e1;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            nav {
+                padding: 16px 5%;
+            }
+
+            .nav-links {
+                gap: 14px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .hero {
+                min-height: 520px;
+                padding: 60px 20px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .search-box {
+                flex-direction: column;
+                gap: 8px;
+                padding: 8px;
+            }
+
+            .search-btn {
+                padding: 14px;
+            }
+
+            .stats {
+                gap: 30px;
+                padding: 25px 10px;
+            }
+
+            .stat h3 {
+                font-size: 20px;
+            }
+
+            .stat p {
+                font-size: 12px;
+            }
+
+            .features {
+                padding: 60px 5%;
+            }
+
+            .features h2 {
+                font-size: 29px;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 360px;
+            }
+
+            .cta {
+                margin: 0 5% 50px;
+            }
+
+            .cta h2 {
+                font-size: 26px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav>
+
+    <div class="logo">
+        JobPortal
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/jobs">
+            Jobs
+        </a>
+
+        <a href="#features">
+            About
+        </a>
+
+        <a
+                href="/login"
+                class="login-btn">
+
+            Login
+
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+            🚀 Your career starts here
+        </div>
+
+        <h1>
+            Find Your
+            <span>Dream Job</span>
+        </h1>
+
+        <p>
+            Discover opportunities that match your skills,
+            explore great companies, and take the next step
+            in your career.
+        </p>
+
+
+        <!-- Search -->
+
+        <div class="search-box">
+
+            <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search jobs, skills or companies"
+            >
+
+            <button
+                    class="search-btn"
+                    onclick="searchJobs()">
+
+                Search Jobs
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     STATS
+========================= -->
+
+<section class="stats">
+
+    <div class="stat">
+
+        <h3>100+</h3>
+
+        <p>
+            Job Opportunities
+        </p>
+
+    </div>
+
+
+    <div class="stat">
+
+        <h3>50+</h3>
+
+        <p>
+            Companies
+        </p>
+
+    </div>
+
+
+    <div class="stat">
+
+        <h3>24/7</h3>
+
+        <p>
+            Career Access
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FEATURES
+========================= -->
+
+<section
+        class="features"
+        id="features">
+
+    <div class="section-label">
+        Simple & Powerful
+    </div>
+
+    <h2>
+        Everything You Need
+    </h2>
+
+    <p class="section-description">
+
+        JobPortal makes your job search easier by bringing
+        opportunities, applications and career growth into
+        one simple platform.
+
+    </p>
+
+
+    <div class="cards">
+
+
+        <!-- Card 1 -->
+
+        <div class="card">
+
+            <div class="card-icon">
+                🔍
+            </div>
+
+            <h3>
+                Find Jobs
+            </h3>
+
+            <p>
+                Search and discover job opportunities that
+                match your skills, interests and career goals.
+            </p>
+
+        </div>
+
+
+        <!-- Card 2 -->
+
+        <div class="card">
+
+            <div class="card-icon">
+                📄
+            </div>
+
+            <h3>
+                Easy Apply
+            </h3>
+
+            <p>
+                Apply for jobs quickly and manage all your
+                applications from one convenient place.
+            </p>
+
+        </div>
+
+
+        <!-- Card 3 -->
+
+        <div class="card">
+
+            <div class="card-icon">
+                🚀
+            </div>
+
+            <h3>
+                Career Growth
+            </h3>
+
+            <p>
+                Discover opportunities that help you develop
+                your skills and move forward in your career.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CALL TO ACTION
+========================= -->
+
+<section class="cta">
+
+    <h2>
+        Ready to Start Your Career?
+    </h2>
+
+    <p>
+        Create your account and explore available opportunities.
+    </p>
+
+    <a
+            href="/register"
+            class="cta-btn">
+
+        Create Free Account
+
+    </a>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        © 2026 <strong>JobPortal</strong>.
+        All rights reserved.
+    </p>
+
+</footer>
+
+
+<!-- =========================
+     SEARCH JAVASCRIPT
+========================= -->
+
+<script>
+
+    function searchJobs() {
+
+        const keyword =
+            document.getElementById("searchInput")
+                .value
+                .trim();
+
+
+        if (keyword === "") {
+
+            alert(
+                "Please enter a job, skill or company."
+            );
+
+            return;
+        }
+
+
+        window.location.href =
+            "/jobs?keyword=" +
+            encodeURIComponent(keyword);
+
+    }
+
+
+    // Search using Enter key
+
+    document
+        .getElementById("searchInput")
+        .addEventListener("keydown", function(event) {
+
+            if (event.key === "Enter") {
+
+                searchJobs();
+
+            }
+
+        });
+
+</script>
+
+
+</body>
+
+</html>
