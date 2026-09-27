@@ -249,29 +249,22 @@ http://localhost:8080
 ## 📸 Screenshots
 
 ### 🏠 Home Page
-
-![Home Page](screenshots/home.png)
+![Home Page](screenshots/home.png.png)
 
 ### 🔐 Login Page
-
-![Login Page](screenshots/login.png)
+![Login Page](screenshots/login.png.png)
 
 ### 💼 Jobs Page
-
-![Jobs Page](screenshots/jobs.png)
+![Jobs Page](screenshots/jobs.png.png)
 
 ### 📄 Job Details
-
-![Job Details](screenshots/job-details.png)
+![Job Details](screenshots/job-details.png.png)
 
 ### 📋 My Applications
-
-![My Applications](screenshots/applications.png)
+![My Applications](screenshots/my-applications.png.png)
 
 ### 👑 Admin Dashboard
-
-![Admin Dashboard](screenshots/admin.png)
-
+![Admin Dashboard](screenshots/admin.png.png)
 ---
 
 ## 👨‍💻 Author
